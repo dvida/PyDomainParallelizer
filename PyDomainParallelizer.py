@@ -57,6 +57,7 @@ def DomainParallelizer(domain, function, cores, kwarg_dict=None):
     return results
 
 
+
 ##############################
 ## USAGE EXAMPLE
 
@@ -79,6 +80,8 @@ def mp_worker(inputs, wait_time):
     # Must use if you want print to be visible on the screen!
     sys.stdout.flush()
 
+    return int(wait_time)
+
 
 
 if __name__ == '__main__':
@@ -93,5 +96,7 @@ if __name__ == '__main__':
     cpu_cores = multiprocessing.cpu_count()
 
     # Run the parallelized function
-    DomainParallelizer(data, mp_worker, cpu_cores)
+    results = DomainParallelizer(data, mp_worker, cpu_cores)
+
+    print('Results:', results)
 
